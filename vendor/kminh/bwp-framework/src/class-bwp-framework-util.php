@@ -104,13 +104,13 @@ class BWP_Framework_Util
 
 	public static function is_on_main_blog()
 	{
-		global $blog_id;
+		global $current_site, $blog_id;
 
 		// not a multisite installation, we're always on main blog
 		if (!self::is_multisite())
 			return true;
 
-		return intval($blog_id) === 1;
+		return intval($blog_id) === (int)$current_site->blog_id;
 	}
 
 	public static function can_update_site_option()
